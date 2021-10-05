@@ -49,6 +49,7 @@ const cardGenerator = () => {
     back.classList = "back";
     //Attach the info to the cards
     face.src = item.imgSrc;
+    card.setAttribute("name", item.name);
     //Attach cards to the section
     section.appendChild(card);
     card.appendChild(face);
@@ -56,8 +57,28 @@ const cardGenerator = () => {
 
     card.addEventListener("click", (e) => {
       card.classList.toggle("toggleCard");
+      checkCards(e);
     });
   });
+};
+
+//Check Cards
+const checkCards = (e) => {
+  const clickedCard = e.target;
+  clickedCard.classList.add("flipped");
+  const flippedCards = document.querySelectorAll(".flipped");
+  console.log(clickedCard);
+  //Logic
+  if (flippedCards.length === 2) {
+    if (
+      flippedCards[0].getAttribute("name") ===
+      flippedCards[1].getAttribute("name")
+    ) {
+      console.log("you win");
+    } else {
+      console.log("you Lost");
+    }
+  }
 };
 
 cardGenerator();

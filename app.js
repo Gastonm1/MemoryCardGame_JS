@@ -45,7 +45,7 @@ const cardGenerator = () => {
     const face = document.createElement("img");
     const back = document.createElement("div");
     card.classList = "card";
-    face.classlist = "face";
+    face.classList = "face";
     back.classList = "back";
     //Attach the info to the cards
     face.src = item.imgSrc;
@@ -53,6 +53,10 @@ const cardGenerator = () => {
     section.appendChild(card);
     card.appendChild(face);
     card.appendChild(back);
+
+    card.addEventListener("click", (e) => {
+      card.classList.toggle("toggleCard");
+    });
   });
 };
 

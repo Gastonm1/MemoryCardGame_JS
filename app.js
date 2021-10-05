@@ -1,7 +1,7 @@
 //Grab some stuff
 const section = document.querySelector("section");
 const playerLivesCount = document.querySelector("span");
-const playerLives = 4;
+let playerLives = 4;
 
 //Link player Lives count
 playerLivesCount.textContent = playerLives;
@@ -75,10 +75,35 @@ const checkCards = (e) => {
       flippedCards[1].getAttribute("name")
     ) {
       console.log("you win");
+      flippedCards.forEach((card) => {
+        card.classList.remove("flipped");
+        card.style.pointerEvents = "none";
+      });
     } else {
       console.log("you Lost");
+      flippedCards.forEach((card) => {
+        card.classList.remove("flipped");
+        setTimeout(() => {
+          card.classList.remove("toggleCard");
+        }, 1000);
+      });
+      playerLives--;
+      playerLivesCount.textContent = playerLives;
+      if (playerLives === 0) {
+        restart();
+      }
     }
   }
+};
+
+//Restart
+const restart = () => {
+  let cardData = randomize();
+  let faces = document.querySelectorAll(".face");
+  let cards = document.querySelectorAll(".card");
+  cardData.forEach((item, index) => {
+    cards[index].classList.remove("toggleCard");
+  });
 };
 
 cardGenerator();

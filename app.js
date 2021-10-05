@@ -8,7 +8,6 @@ playerLivesCount.textContent = playerLives;
 
 //Generate the data used for the cards
 // Requirements: Images & Name for Cards
-//We generate the object 🧑🏻‍💻
 const getData = () => [
   { imgSrc: "./images/beatles.jpeg", id: 1, name: "beatles" },
   { imgSrc: "./images/blink182.jpeg", id: 2, name: "blink 182" },
@@ -43,10 +42,11 @@ const cardGenerator = () => {
   cardData.forEach((item) => {
     const card = document.createElement("div");
     const face = document.createElement("img");
-    const back = document.createElement("div");
+    const back = document.createElement("img");
     card.classList = "card";
     face.classList = "face";
     back.classList = "back";
+    back.src = "./images/card.jpeg";
     //Attach the info to the cards
     face.src = item.imgSrc;
     card.setAttribute("name", item.name);
@@ -75,13 +75,15 @@ const checkCards = (e) => {
       flippedCards[0].getAttribute("name") ===
       flippedCards[1].getAttribute("name")
     ) {
-      console.log("you win");
+      console.log("Match");
       flippedCards.forEach((card) => {
         card.classList.remove("flipped");
         card.style.pointerEvents = "none";
       });
+      playerLives++;
+      playerLivesCount.textContent = playerLives;
     } else {
-      console.log("you Lost");
+      console.log("Lose a Life");
       flippedCards.forEach((card) => {
         card.classList.remove("flipped");
         setTimeout(() => {

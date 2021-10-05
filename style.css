@@ -11,8 +11,8 @@ body {
     height: 100vh;
     flex-direction: column;
     background: #74ebd5;
-    background: -webkit-linear-gradient(to right, #acb6e5, #74ebd5);
-    background: linear-gradient(to right, #acb6e5, #74ebd5);
+    background: -webkit-linear-gradient(to right, #f3f4fa, #74ebd5);
+    background: linear-gradient(to right, #f3f4fa, #74ebd5);
 }
 
 section {
@@ -40,7 +40,7 @@ section {
 }
 
 .back {
-    background: #ffff;
+    background: black;
     backface-visibility: hidden;
 }
 
